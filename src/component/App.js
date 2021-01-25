@@ -4,10 +4,10 @@ import Offer from './Offer';
 
 //<img src={} className="App-logo" alt="logo" />
 class App extends Component {
-  render (){
+  render() {
     return (
-      <div>       
-        <Offer/>
+      <div>
+        <Offer />
       </div>
     );
   }

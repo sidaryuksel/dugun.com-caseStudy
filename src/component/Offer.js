@@ -10,7 +10,7 @@ class Offer extends Component {
     constructor(props) {
         super(props);
         this.props.getHotelsInfo();
-        this.state={
+        this.state = {
             buttonClicked: false
         }
     }
@@ -30,39 +30,39 @@ class Offer extends Component {
         console.log("offerdayım");
         console.log("hotels:", hotels);
         return (
-            
+
             <div className='container'>
                 {!buttonClicked ?
-                hotels.map(hotel =>
-                    <div>
+                    hotels.map(hotel =>
+                        <div>
                         <img src={hotel.imageUrl} alt='resim' />
-                        <div className='row'>
-                            {hotel.listingDataBrief.map(list =>
-                                <div className='col-4' key={list.value}>{list.label + ' ' + list.value}</div>
-                            )}
+                            <div className='row'>
+                                {hotel.listingDataBrief.map(list =>
+                                    <div className='col-4' key={list.value}>{list.label + ' ' + list.value}</div>
+                                )}
+                            </div>
+                            <h4>{hotel.district.name}</h4>
+                            <h2>{hotel.name}</h2>
+                            <StarRatings
+                                rating={hotel.score}
+                                starDimension="20px"
+                                starSpacing="1px"
+                                starRatedColor="blue"
+                                //changeRating={this.changeRating}
+                                numberOfStars={5}
+                                name='rating'
+                            />
+                            {'  ' + hotel.commentCount + ' '}
+                            <img src={success} width='2%' alt='icon' />
+                            <span>{'  '}İnceleme</span>
+                            <br /><br />
+                            <Button outline color="danger" size="sm">İncele</Button>{'  '}
+                            <Button color="danger" size="sm" onClick={this.handleClick}>Ücretsiz Teklif Al</Button>
+                            <br /><br />
                         </div>
-                        <h4>{hotel.district.name}</h4>
-                        <h2>{hotel.name}</h2>
-                        <StarRatings
-                            rating={hotel.score}
-                            starDimension="20px"
-                            starSpacing="1px"
-                            starRatedColor="blue"
-                            //changeRating={this.changeRating}
-                            numberOfStars={5}
-                            name='rating'
-                        />
-                        {'  ' + hotel.commentCount + ' '}
-                        <img src={success} width='2%' alt='icon' />
-                        <span>{'  '}İnceleme</span>
-                        <br /><br />
-                        <Button outline color="danger" size="sm">İncele</Button>{'  '}
-                        <Button color="danger" size="sm" onClick={this.handleClick}>Ücretsiz Teklif Al</Button>
-                        <br /><br />
-                    </div>
-                )
-                :
-                <GetOffer />
+                    )
+                    :
+                    <GetOffer />
                 }
             </div>
         );
